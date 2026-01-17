@@ -27,10 +27,10 @@ const App = () => {
       <Button handleClick={handleGoodClick} text='good'/>
       <Button handleClick={handleNeutralClick} text='neutral'/>
       <Button handleClick={handleBadClick} text='bad'/>
-      <Statics subtitle={strings.subtitle}/>
+      <Subtitle subtitle={strings.subtitle}/>
       <Statics text='good' tag={good}/>
       <Statics text='neutral' tag={neutral}/>
-      <Statics text='good' tag={bad}/>
+      <Statics text='bad' tag={bad}/>
       
     </div>
   )
@@ -42,10 +42,15 @@ const Header = ({feedback}) => (
   </div>
 )
 
-const Statics = ({subtitle, text, tag}) =>(
+const Subtitle = ({subtitle}) =>(
   <div>
-    <h3>{subtitle}</h3>
-    <p>{text} {tag}</p>
+    <h2>{subtitle}</h2>
+  </div>
+)
+
+const Statics = ({text, tag}) =>(
+  <div>
+    <p>{text} = {tag}</p>
   </div>
 )
 
