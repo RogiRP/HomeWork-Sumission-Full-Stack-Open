@@ -38,12 +38,12 @@ const App = () => {
     }
     return(
       <div>
-        <Statics text='Good' tag={good}/>
-      <Statics text='Neutral' tag={neutral}/>
-      <Statics text='Bad' tag={bad}/>
-      <Total text='Total' total={total}/>
-      <Average text='Average' average={average}/>
-      <Positive text='Positive' positive={positive + "%"}/>
+        <StatisticLine  text='Good' tag={good}/>
+      <StatisticLine  text='Neutral' tag={neutral}/>
+      <StatisticLine  text='Bad' tag={bad}/>
+      <StatisticLine  text='Total' tag={total}/>
+      <StatisticLine  text='Average' tag={average}/>
+      <StatisticLine  text='Positive' tag={positive + "%"}/>
       </div>
     )
   }
@@ -71,7 +71,7 @@ const Subtitle = ({subtitle}) =>(
   </div>
 )
 
-const Statics = ({text, tag}) =>(
+const StatisticLine  = ({text, tag}) =>(
   <div>
     <p>{text} = {tag}</p>
   </div>
@@ -83,22 +83,6 @@ const Button = ({handleClick, text}) => (
   </button>
 )
 
-const Total = ({total, text}) => (
-  <div>
-    <p>{text} = {total}</p>
-  </div>
-)
 
-const Average = ({average, text}) => (
-  <div>
-    <p>{text} = {average}</p>
-  </div>
-)
-
-const Positive = ({text, positive}) => (
-  <div>
-    <p>{text} = {positive}</p>
-  </div>
-)
 
 export default App
