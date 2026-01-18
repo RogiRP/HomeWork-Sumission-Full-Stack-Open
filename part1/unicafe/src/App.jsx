@@ -38,12 +38,18 @@ const App = () => {
     }
     return(
       <div>
-        <StatisticLine  text='Good' tag={good}/>
-      <StatisticLine  text='Neutral' tag={neutral}/>
-      <StatisticLine  text='Bad' tag={bad}/>
-      <StatisticLine  text='Total' tag={total}/>
-      <StatisticLine  text='Average' tag={average}/>
-      <StatisticLine  text='Positive' tag={positive + "%"}/>
+        <table>
+          <tbody>
+            <StatisticLine  text='Good' tag={good}/>
+            <StatisticLine  text='Neutral' tag={neutral}/>
+            <StatisticLine  text='Bad' tag={bad}/>
+            <StatisticLine  text='Total' tag={total}/>
+            <StatisticLine  text='Average' tag={average}/>
+            <StatisticLine  text='Positive' tag={positive + "%"}/>
+          </tbody>
+        </table>
+          
+        
       </div>
     )
   }
@@ -72,9 +78,12 @@ const Subtitle = ({subtitle}) =>(
 )
 
 const StatisticLine  = ({text, tag}) =>(
-  <div>
-    <p>{text} = {tag}</p>
-  </div>
+  
+  <tr>
+    <td>{text}</td>  
+    <td>{tag}</td>
+  </tr>
+
 )
 
 const Button = ({handleClick, text}) => (
