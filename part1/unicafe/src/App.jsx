@@ -32,6 +32,21 @@ const App = () => {
     positive = (good / total) * 100
   }
 
+  const renderStatics = () => {
+    if (total === 0){
+      return <p>No feedback given</p>
+    }
+    return(
+      <div>
+        <Statics text='Good' tag={good}/>
+      <Statics text='Neutral' tag={neutral}/>
+      <Statics text='Bad' tag={bad}/>
+      <Total text='Total' total={total}/>
+      <Average text='Average' average={average}/>
+      <Positive text='Positive' positive={positive + "%"}/>
+      </div>
+    )
+  }
   return (
     <div>
       <Header feedback={strings.feedback}/>
@@ -39,13 +54,7 @@ const App = () => {
       <Button handleClick={handleNeutralClick} text='neutral'/>
       <Button handleClick={handleBadClick} text='bad'/>
       <Subtitle subtitle={strings.subtitle}/>
-      <Statics text='Good' tag={good}/>
-      <Statics text='Neutral' tag={neutral}/>
-      <Statics text='Bad' tag={bad}/>
-      <Total text='Total' total={total}/>
-      <Average text='Average' average={average}/>
-      <Positive text='Positive' positive={positive + "%"}/>
-
+      {renderStatics()}
     </div>
   )
 }
