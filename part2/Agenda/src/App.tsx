@@ -6,10 +6,10 @@ const App = () => {
       number: '9993321112'
     },
     { name: 'Ada Lovelace', 
-      number: '39-44-5323523' 
+      number: '1241244566' 
     },
     { name: 'Dan Abramov', 
-      number: '12-43-234345'
+      number: '114214564365'
     }
   ]) 
   const [newName, setNewName] = useState('')
@@ -17,20 +17,20 @@ const App = () => {
   const [filter, setFilter] = useState('')
   
 
-  const handleNameChange = (event) =>{
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
 
     setNewName(event.target.value)
   }
 
-  const handleNumberChange = (event) =>{
+  const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
     setNewNumber(event.target.value)
   }
 
-  const handleFilterChange = (event) =>{
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
     setFilter(event.target.value)
   }
 
-  const addPerson = (event) => {
+  const addPerson = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const existingPerson = persons.some(
