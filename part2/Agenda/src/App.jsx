@@ -10,7 +10,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
-  const [message, setMessage] = useState(null)
+  const [notification, setNotification] = useState(null)
 
   useEffect(() => {
     personService.getAll()
@@ -56,11 +56,14 @@ const App = () => {
         setNewName('')
         setNewNumber('')
 
-        setMessage(`Changed ${returnedPerson.name}'s number`)
-
-        setTimeout(() => {
-          setMessage(null)
-        }, 3500)   
+        showNotificacition(`Changed ${returnedPerson.name}'s number`, 'success')
+      })
+      .catch(() => {
+        showNotificacition(
+          `Information of ${existingPerson.name} has already been removed from server`,
+          'error'
+        )
+        setPersons(persons.filter(person => person.id !== existingPerson.id))
       })
       return
     }
@@ -76,11 +79,7 @@ const App = () => {
         setNewName('')
         setNewNumber('')
 
-        setMessage(`Added ${returnedPerson.name}`)
-
-        setTimeout(()=> {
-          setMessage(null)
-        }, 3500)
+        showNotificacition(`Added ${returnedPerson.name}`, 'success')
       })
   }
 
@@ -98,6 +97,14 @@ const App = () => {
     personService.remove(id)
       .then(() => {
         setPersons(persons.filter(p => p.id !== id))
+        showNotificacition(`Deleted ${person.name}`, 'success')
+      })
+      .catch(() => {
+        showNotificacition(
+          `Information of ${person.name} has already been removed from server`,
+          'error'
+        )
+        setPersons(persons.filter(p => p.id !== id))
       })
   }
 
@@ -105,11 +112,19 @@ const App = () => {
     person.name.toLowerCase().includes(filter.toLowerCase())
   )
 
+  const showNotificacition = (message, type = 'success') => {
+    setNotification({message, type})
+
+    setTimeout(() => {
+      setNotification(null)
+    }, 5000)
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
 
-      <Notification message={message} />
+      <Notification notification={notification} />
 
       <Filter
         filter={filter}
