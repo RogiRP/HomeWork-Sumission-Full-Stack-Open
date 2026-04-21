@@ -14,6 +14,11 @@
       "name": "Roger Ruz",
       "number": "212312312312",
       "id": "WSZvyVWWmEY"
+    },
+    {
+      "name": "Addy Lopez",
+      "number": "192837162",
+      "id": "leQoncZKpp8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
