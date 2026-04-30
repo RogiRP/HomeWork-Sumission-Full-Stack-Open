@@ -58,12 +58,8 @@ const App = () => {
 
         showNotificacition(`Changed ${returnedPerson.name}'s number`, 'success')
       })
-      .catch(() => {
-        showNotificacition(
-          `Information of ${existingPerson.name} has already been removed from server`,
-          'error'
-        )
-        setPersons(persons.filter(person => person.id !== existingPerson.id))
+      .catch(error => {
+        showNotificacition(error.response.data.error, 'error')
       })
       return
     }
@@ -80,6 +76,9 @@ const App = () => {
         setNewNumber('')
 
         showNotificacition(`Added ${returnedPerson.name}`, 'success')
+      })
+      .catch(error => {
+        showNotificacition(error.response.data.error, 'error')
       })
   }
 
